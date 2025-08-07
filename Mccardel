@@ -1,0 +1,87 @@
+// File: /README.md
+# McCardel Sales App
+
+This is a web + iPhone-friendly application for McCardel Culligan sales and management workflows.
+
+## Features
+- Sales staff can:
+  - Enter new orders (customer info, water test, install notes, signature)
+  - Track where they’re going using the "Go To" feature
+  - Upload installation photos
+  - Follow up on previous leads
+- Managers can:
+  - View and approve leads
+  - See what’s missing
+  - Track mileage, location, and follow-up history
+  - Generate reports (sold/missed leads, closing %, etc.)
+
+## Stack
+- Next.js (React framework)
+- TailwindCSS (styling)
+- Supabase (auth, database, and storage)
+- Vercel (hosting)
+
+## Getting Started
+### 1. Clone the Repo
+```
+git clone https://github.com/YOUR-USERNAME/mccardel-sales-app.git
+```
+
+### 2. Install Dependencies
+```
+npm install
+```
+
+### 3. Setup Environment Variables
+Copy `.env.example` to `.env.local` and fill in your Supabase project keys:
+```
+NEXT_PUBLIC_SUPABASE_URL=your-project-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+```
+
+### 4. Run the Dev Server
+```
+npm run dev
+```
+
+### 5. Deploy to Vercel
+Connect the GitHub repo to your Vercel account, add the environment variables, and deploy.
+
+---
+
+// File: /pages/index.tsx
+import Link from 'next/link';
+
+export default function Home() {
+  return (
+    <main className="p-8">
+      <h1 className="text-3xl font-bold mb-4">McCardel Sales Dashboard</h1>
+      <div className="space-y-2">
+        <Link href="/sales/new-order" className="block bg-blue-500 text-white p-4 rounded">New Order</Link>
+        <Link href="/sales/leads" className="block bg-green-500 text-white p-4 rounded">Leads</Link>
+        <Link href="/sales/go-to" className="block bg-yellow-500 text-white p-4 rounded">Go To</Link>
+        <Link href="/sales/follow-up" className="block bg-purple-500 text-white p-4 rounded">Follow Up</Link>
+      </div>
+    </main>
+  );
+}
+
+// Add similar layout/pages for manager views under `/pages/manager/`
+// Example: /pages/manager/leads.tsx, /pages/manager/reports.tsx, /pages/manager/location.tsx
+
+// Supabase client config (utils/supabaseClient.ts)
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+// Include additional pages: New Order form, Install Notes, Signature Capture, Photo Upload
+// These should save structured data into Supabase tables for leads, users, photos, etc.
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/cmccar89/mccardel-sales-app.git
+git push -u origin main

@@ -80,8 +80,4 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 // Include additional pages: New Order form, Install Notes, Signature Capture, Photo Upload
 // These should save structured data into Supabase tables for leads, users, photos, etc.
-git init
-git add .
-git commit -m "Initial commit"
-git remote add origin https://github.com/cmccar89/mccardel-sales-app.git
-git push -u origin main
+
